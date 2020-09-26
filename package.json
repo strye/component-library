@@ -1,0 +1,13 @@
+{
+  "name": "bm-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bm-template.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server ./ -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
