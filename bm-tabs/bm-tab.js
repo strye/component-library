@@ -1,18 +1,19 @@
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
 	<style>
-        /*@import url("/style/main.css");*/
-        :host {border:2px solid var(--color-dark);}
+        @import url("tabs.css");
+        :host {cursor: pointer}
     </style>
-    <div id="tab"><slot></slot></div>
+    <div id="tab" class="tab"><slot></slot></div>
 `;
 
 class BmTab extends HTMLElement {
     static get is() { return 'bm-tab'; }
-    static get observedAttributes() { return ['tab-title', 'tab-index', 'selected']; }
+    static get observedAttributes() { return ['tab-title', 'selected']; }
     constructor() {
         super();
-        this._index = 0;
+        this._index = -1;
+        this._value = null;
         this._title = "";
         this._selected = false;
 
@@ -21,13 +22,16 @@ class BmTab extends HTMLElement {
         shadowRoot.appendChild(template.content.cloneNode(true));
     }
     get title() { return this._title; }
-    set title(val) { this.setAtProp('tab-caption', '_title', val) }
+    set title(val) { this.setAtProp('tab-caption', val) }
     get index() { return this._index; }
-    set index(val) { this.setAtProp('selected', '_index', val) }
+    set index(val) { this._index = val; }
+
+    get tabValue() { return this._value; }
+    set tabValue(val) { this.setAtProp('tab-value', val); }
+
     get selected() { return this._selected; }
-    set selected(val) { this.setAtProp('selected', '_selected', val) }
-    setAtProp(attrName, prop, val) {
-        this[prop] = val;
+    set selected(val) { this.setAtProp('selected', val) }
+    setAtProp(attrName, val) {
         if (val) { this.setAttribute(attrName, val); } 
         else { this.removeAttribute(attrName); }
 		this.render()
@@ -35,19 +39,19 @@ class BmTab extends HTMLElement {
 
 
     render() {
-        let tabTitle = this.shadowRoot.querySelector("#tab");
-        tabTitle.title = this._title;
+        let tab = this.shadowRoot.querySelector("#tab");
+        tab.title = this._title;
+        tab.classList.toggle('active-tab', this._selected);
     }
 
 
     connectedCallback() {
         let self = this;
-        self._title = this.getAttribute('tab-caption');
-        if (this.getAttribute('tab-index')) self._index = this.getAttribute('tab-index');
-        if (this.getAttribute('selected')) self._selected = this.getAttribute('selected');
+        if (this.getAttribute('tab-value')) self._value = this.getAttribute('tab-value');
+        this._selected = this.getAttribute('selected') ? true: false;
+        if (this.getAttribute('tab-caption')) self._title = this.getAttribute('tab-caption');
 
         self.shadowRoot.querySelector("#tab").addEventListener('click', evt => {
-            self._selected = true;
             self.dispatchEvent(new CustomEvent('selected', {
                 bubbles: true,
                 composed: true,
@@ -59,9 +63,9 @@ class BmTab extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'tab-value') { this._value = newValue }
         if (name === 'tab-caption') { this._title = newValue }
-        if (name === 'tab-index') { this._index = newValue }
-        if (name === 'selected') { this._selected = newValue }
+        if (name === 'selected') { this._selected = newValue ? true: false; }
         this.render()
     }
 

@@ -1,0 +1,25 @@
+.cntr {
+    overflow: hidden;
+    border: 2px solid #333;
+    width:450px;
+    padding: 0 3px;
+    flex:1;
+}
+h1 {font-size:18px; height: 22px;margin: 2px 0;text-align:center;}
+.hidden {display:none;}
+.tab {
+    cursor: pointer;
+    width:20px;
+    height:75px; 
+    border:1px solid #000; 
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #ddf; 
+    margin-top: 3px;
+}
+.tab div {
+    margin: 15px 2px 15px 4px;
+    transform:rotate(90deg)
+}
+.active {background-color: #9d9}
+.dirty {background-color: #d99}

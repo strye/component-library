@@ -1,70 +1,68 @@
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
 	<style>
-        /*@import url("/style/main.css");*/
-        :host {border:2px solid var(--color-dark);}
-        h1 {margin-bottom: 18px;font-size:1.4em;padding:4px 18px;}
+        @import url("tabs.css");
+        :host {display: block;}
     </style>
-    <h1 id="elmTitle"></h1>
-    <div>
+    <div class="tab-conatiner">
         <slot></slot>
     </div>
 `;
 
 class BmTabs extends HTMLElement {
     static get is() { return 'bm-tabs'; }
-    static get observedAttributes() { return ['elm-title']; }
+    //static get observedAttributes() { return ['elm-title']; }
     constructor() {
         super();
         this._tabs = []
-
-        this._elmTitle = "";
+        this._selectedIdx = -1;
 
         // Attach a shadow root to the element.
         const shadowRoot = this.attachShadow({mode: 'open'});
         shadowRoot.appendChild(template.content.cloneNode(true));
     }
-    get title() { return this._elmTitle; }
-    set title(val) {
-        this._elmTitle = val;
-        if (val) { this.setAttribute('elm-title', val); } 
-        else { this.removeAttribute('elm-title'); }
-		this.render()
+
+    setActive(idx) {
+        this._tabs.forEach(tab => {
+            tab.selected = (tab.index === idx)
+        });
     }
+    tabChange(detail) {
+        if (this._selectedIdx === detail.index) return;
 
+        // Set Active Tab, reset others to false;
+        this._selectedIdx = detail.index;
+        this._tabs.forEach(tab => {
+            tab.selected = (tab.index === detail.index)
+        });
 
-    render() {
-        let elmTitle = this.shadowRoot.querySelector("#elmTitle");
-        elmTitle.innerText = this._elmTitle;
+        // Bubble up the event with the proper context
+        this.dispatchEvent(new CustomEvent('changed', {
+            bubbles: true,
+            composed: true,
+            detail: { index: detail.index, value: detail.tabValue }
+        }));
     }
-
     setupTabs() {
         let self = this, children = this.childNodes;
         let index = 0;
         children.forEach(tab => {
             if(tab.nodeName.toLowerCase() === 'bm-tab') {
                 tab.index = index;
+                if (tab.selected) this._selectedIdx = index;
                 index++;
                 this._tabs.push(tab);
-                tab.addEventListener('selected', evt => {
-                    console.log(evt.detail.index, 'cliiik')
-                })
+                tab.addEventListener('selected', evt => { self.tabChange(evt.detail) })
             }
         });
     }
 
     connectedCallback() {
-        this._elmTitle = this.getAttribute('elm-title');
         this.setupTabs()
-        this.render()
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'elm-title') { 
-            this._elmTitle = newValue
-            this.render()
-        }
-    }
+    // attributeChangedCallback(name, oldValue, newValue) {
+    // }
 
 
 }  // END BmTabs

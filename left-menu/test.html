@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>left-menu</title>
+        <style>
+            @import url('../common/main.css');
+
+            .slot-content { background-color: bisque;}
+
+            body{
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
+            .content-cntr {display: flex;flex: 1;}
+            .content-main, left-menu {height: calc(100vh - 100px)}
+            .content-main {flex:1; padding: 0 4px;overflow:auto; padding-left:24px;}
+            left-menu { max-width: 450px;}
+
+        </style>
+
+        <script type="module" src="left-menu.js"></script>    
+    </head>
+    <body>
+        <header>
+            <h1>left-menu Test page</h1>
+            <a href="/">Home</a>
+        </header>
+        
+        <div class="content-cntr">
+            <left-menu elm-title="test">
+                <div slot="mnlist" class="slot-content">
+                    <h3>THIS IS THE LIST CONTENT</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ullamcorper sagittis sem, non laoreet mi consectetur ac. Cras ornare egestas dolor, eget aliquam erat tempor nec. Donec sed lorem aliquet, mollis sem at, tincidunt neque. Curabitur scelerisque dolor nec nisl consectetur sodales. Phasellus egestas velit ipsum. In dictum vehicula magna, non fringilla turpis. In vehicula pretium lacus, vitae eleifend leo ultricies vitae. Mauris eleifend augue non purus luctus dictum nec pharetra libero. Nullam vitae lorem non lacus mattis ullamcorper vitae sit amet turpis.
+                </div>
+                <div slot="mnfilter" class="slot-content">
+                    <h3>THIS IS THE FILTER CONTENT</h3>
+                    Etiam vel bibendum elit. Suspendisse non ante est. Sed venenatis tellus in risus facilisis, ac gravida nunc finibus. Vivamus eu felis eu velit molestie vestibulum et ultrices odio. Cras in bibendum augue, eu porttitor velit. Maecenas eu tristique lorem. Mauris hendrerit velit sollicitudin eros accumsan tincidunt. Nullam lacinia enim tellus, in sollicitudin augue dignissim sit amet. Integer magna lacus, sodales vitae felis id, egestas condimentum urna. Sed luctus, risus commodo auctor tincidunt, lorem quam ornare lorem, accumsan tempus augue massa eu felis. Nulla nec ipsum erat. Aenean fringilla varius elit non mollis. Nam a sapien elementum, tempus arcu et, molestie metus. Quisque vitae eros sed enim lobortis egestas ut quis diam. Duis sit amet ultrices odio. Donec fermentum interdum mauris, sed tempor arcu molestie in. 
+                </div>
+            </left-menu>
+            <div class="content-main">
+                <h2>This is the main content we are working with.</h2>
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar nec justo sed tempus. Quisque id sapien nibh. In hac habitasse platea dictumst. Sed malesuada, mi vitae scelerisque tristique, ex tortor molestie ligula, vitae tempus magna nibh eu eros. Nulla at nisi nec nunc pellentesque sodales eget vel tellus. Integer congue, nulla et sodales egestas, metus felis convallis elit, a cursus neque tortor nec nisi. Fusce vulputate convallis maximus. Duis condimentum vulputate dui nec consectetur. Aliquam id dolor vitae lacus ornare faucibus. Suspendisse hendrerit orci a tortor lacinia, eget convallis augue faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus neque ante, eu vehicula tortor volutpat ac. Donec in sem dui. In hac habitasse platea dictumst. Donec magna massa, vulputate bibendum posuere eu, elementum id massa.</p>
+                    <p>Proin maximus viverra libero a volutpat. Proin magna orci, iaculis eget posuere a, semper eget dui. Donec cursus, dui ut aliquet interdum, dui odio varius turpis, ornare egestas purus purus id ligula. Praesent quis euismod odio. Nunc tortor lorem, cursus quis lorem et, efficitur tincidunt orci. Morbi sit amet ex massa. Praesent sit amet vulputate arcu.</p>
+                    <p>Praesent cursus risus id sapien rutrum imperdiet. Etiam rhoncus lectus augue, ac ullamcorper nulla auctor sit amet. Nulla at ipsum nulla. Sed vel massa ligula. Etiam sit amet risus sit amet lacus mollis malesuada at at mi. Suspendisse eleifend suscipit libero, id dignissim nisi sollicitudin sit amet. Mauris venenatis nulla rutrum orci dapibus molestie.</p>
+                    <p>Aliquam pulvinar dui orci, sit amet sollicitudin neque volutpat id. Integer nec porttitor tellus. Ut at nisl consectetur, ultricies nunc at, molestie lorem. Donec eu pulvinar lectus, id consequat mi. Ut dui arcu, molestie in lacinia sit amet, euismod et dolor. Aliquam tristique sapien mauris, viverra tincidunt elit pulvinar sed. Pellentesque rhoncus sed mauris imperdiet venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla scelerisque maximus magna. Sed facilisis mi ut mi laoreet, et congue eros sollicitudin. Nunc faucibus pharetra leo, eu luctus dui venenatis sit amet. Pellentesque at dapibus justo, at viverra nibh. Donec et purus rhoncus, fermentum ligula quis, porttitor sapien. Nam eget ligula vitae odio porta dignissim.</p>
+                    <p>Suspendisse accumsan iaculis quam, sit amet viverra arcu convallis eu. Maecenas vitae risus a libero aliquam dictum non at odio. Morbi consectetur tellus nec dignissim rutrum. Etiam pretium posuere vehicula. Maecenas consequat, mauris pretium maximus ullamcorper, justo ligula porttitor lacus, ac sagittis turpis felis sed lacus. Proin non dictum lacus. Sed tincidunt velit neque, eu condimentum diam accumsan id. Pellentesque dapibus tempor scelerisque. Praesent ac congue metus. Donec eget metus consequat, cursus felis in, sodales libero. Fusce at augue eros. Integer mollis nec ante quis placerat. Nullam euismod nisl et eros sagittis consectetur. Vestibulum eu elit convallis, efficitur est at, venenatis neque. Quisque vel magna purus. Nullam aliquam ut eros pharetra consectetur.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        </script>
+    </body>
+</html>

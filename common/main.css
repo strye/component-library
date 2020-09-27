@@ -1,0 +1,38 @@
+:root {
+    --color-1: rgb(209,227,239); 
+	--color-2: rgb(135,143,215); 
+	--color-3: rgb(255,255,115); 
+	--color-4: rgb(197,157,62); 
+	--color-5: rgb(255,192,183); 
+	--color-6: rgb(205,3,27); 
+	--color-7: rgb(129,203,248); 
+	--color-8: rgb(1,166,248); 
+	--color-9: rgb(255,96,0); 
+	--color-10: rgb(61,172,31);
+
+	--color-lite: rgb(244,242,235);
+    --color-dark: rgb(13,12,10);
+    --color-grey: rgba(255,255,255, 0.5);
+    --color-grey-25: rgba(255,255,255, 0.25);
+    --color-grey-75: rgba(255,255,255, 0.75);
+
+    --color-beige:  rgb(253, 205, 47);
+
+	--main-bg-color: var(--color-6);
+	--main-fn-color: var(--color-3);
+
+	--secondary-bg-color: var(--color-8);
+	--secondary-fn-color: var(--color-3);
+
+	--highlite-bg-color: var(--color-9);
+	--highlite-fn-color: var(--color-3);
+
+
+    --tab-bg: var(--color-2);
+    --tab-bdr: var(--color-grey-75);
+    --tab-active-bg: var(--color-4);
+    --tab-active-bdr: var(--color-3);
+    --tabs-bg: var(--color-1);
+    --tabs-bdr: var(--color-1);
+
+}

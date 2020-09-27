@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <title>bm-tabs test</title>
 
+        <style>
+            @import url('../common/main.css');
+            bm-tabs { width: 500px; }
+        </style>
+
         <script type="module" src="bm-tab.js"></script>    
         <script type="module" src="bm-tabs.js"></script>    
     </head>
@@ -14,14 +19,17 @@
         </header>
         
         <div class="page">
-            <bm-tabs elm-title="test">
-                <bm-tab tab-caption="Test One">One</bm-tab>
-                <bm-tab tab-caption="Test Two">Two</bm-tab>
-                <bm-tab tab-caption="Test Three">Three</bm-tab>
+            <bm-tabs id="testElm" elm-title="test">
+                <bm-tab tab-value="one" tab-caption="Test One">One</bm-tab>
+                <bm-tab tab-value="two" tab-caption="Test Two" selected="true">Two</bm-tab>
+                <bm-tab tab-value="three" tab-caption="Test Three">Three</bm-tab>
             </bm-tabs>
         </div>
 
         <script>
+            document.getElementById('testElm').addEventListener('changed', evt => {
+                console.log(evt.detail)
+            })
         </script>
     </body>
 </html>
