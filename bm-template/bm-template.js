@@ -2,7 +2,7 @@ let template = document.createElement('template');
 template.innerHTML = /*html*/`
 	<style>
         /*@import url("/style/main.css");*/
-        :host {border:2px solid var(--color-dark);}
+        :host {display:block;}
         h1 {margin-bottom: 18px;font-size:1.4em;padding:4px 18px;}
     </style>
     <h1 id="elmTitle"></h1>
@@ -47,7 +47,7 @@ class BmTemplate extends HTMLElement {
     }
 
 
-}  // END BmElement
+}  // END BmTemplate
 
 customElements.define(BmTemplate.is, BmTemplate);
     
