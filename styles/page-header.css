@@ -1,0 +1,22 @@
+header {
+	padding: 16px;
+	background-color: var(--secondary-bg-color);
+	color: var(--secondary-fn-color);
+	height:60px;
+	margin:0;
+	box-shadow: 0 5px 10px #888;
+}
+header h1 {font-size: 24px; padding: 0; margin: 0 8px;width:80%;float:left;}
+
+.menu .nav-menu {float:right}
+
+.menu div a {float:right; border: 2px solid #d33;}
+
+::slotted(a) {color:var(--secondary-fn-color)}
+::slotted(a:hover) {background-color: var(--nike-yellow);color:#000;}
+
+
+.menu-home {padding-right: 32px;height: 32px; width: 32px;}
+/*nav a {padding:3px 8px;margin:0 2px;font-style: italic;color:#eee;}*/
+.menu a:hover {background-color: var(--nike-yellow);color:#000;}
+

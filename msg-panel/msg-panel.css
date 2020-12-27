@@ -1,0 +1,15 @@
+.msg {
+	position: fixed;
+	top:0;
+	width:90%;
+	z-index: 1000;
+	transition: display: 2s;
+	transition-timing-function: ease;
+}
+.msg-info {}
+.msg-warning {}
+.msg-confirm {}
+.msg-alert {}
+
+.clearfix{clear: both;}
+.hidden { display: none;}
