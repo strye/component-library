@@ -1,6 +1,6 @@
 (function() { 
 
-    let template = document.createElement('template');
+let template = document.createElement('template');
 template.innerHTML = /*html*/`
     <style>
         @import url('../styles/left-menu.css');

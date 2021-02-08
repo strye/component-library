@@ -1,3 +1,5 @@
+(function() { 
+
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
 	<style>
@@ -76,5 +78,6 @@ class PageManager extends HTMLElement {
 }  // END PageManager
 
 customElements.define(PageManager.is, PageManager);
-    
-export default PageManager;    
+//export default PageManager;
+
+})();

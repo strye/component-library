@@ -1,3 +1,5 @@
+(function() { 
+
 import config from '/js/config.js';
     
 let template = document.createElement('template');
@@ -127,5 +129,6 @@ class EditorBase extends HTMLElement {
 }  // END EditorBase
 
 customElements.define(EditorBase.is, EditorBase);
-    
-export default EditorBase;    
+//export default EditorBase;    
+
+})();

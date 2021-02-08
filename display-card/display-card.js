@@ -1,3 +1,4 @@
+(function() { 
 
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
@@ -95,6 +96,6 @@ class DisplayCard extends HTMLElement {
 }  // END DisplayCard
 
 customElements.define(DisplayCard.is, DisplayCard);
+//export default DisplayCard;
 
-export default DisplayCard;
-
+})();

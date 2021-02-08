@@ -1,3 +1,5 @@
+(function() { 
+
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
     <div></div>
@@ -123,5 +125,6 @@ class CommsManager extends HTMLElement {
 }  // END CommsManager
 
 customElements.define(CommsManager.is, CommsManager);
-    
-export default CommsManager;    
+export default CommsManager;
+
+})();

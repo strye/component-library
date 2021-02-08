@@ -1,3 +1,5 @@
+(function() { 
+
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
     <style>
@@ -74,5 +76,6 @@ class PageHeader extends HTMLElement {
 }  // END PageHeader
 
 customElements.define(PageHeader.is, PageHeader);
+//export default PageHeader;
 
-export default PageHeader;
+})();

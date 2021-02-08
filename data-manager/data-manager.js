@@ -1,3 +1,5 @@
+(function() { 
+
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
     <div></div>
@@ -296,5 +298,6 @@ class DataManager extends HTMLElement {
 }  // END DataManager
 
 customElements.define(DataManager.is, DataManager);
-    
-export default DataManager;    
+export default DataManager;
+
+})();

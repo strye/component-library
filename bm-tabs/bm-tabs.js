@@ -1,3 +1,5 @@
+(function() { 
+
 let template = document.createElement('template');
 template.innerHTML = /*html*/`
 	<style>
@@ -68,5 +70,6 @@ class BmTabs extends HTMLElement {
 }  // END BmTabs
 
 customElements.define(BmTabs.is, BmTabs);
-    
-export default BmTabs;    
+//export default BmTabs; 
+
+})();

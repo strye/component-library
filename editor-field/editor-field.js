@@ -1,3 +1,5 @@
+(function() { 
+
 import config from '/js/config.js';
     
 let template = document.createElement('template');
@@ -193,5 +195,6 @@ class EditField extends HTMLElement {
 }  // END EditField
 
 customElements.define(EditField.is, EditField);
-    
-export default EditField;
+//export default EditField;
+
+})();
