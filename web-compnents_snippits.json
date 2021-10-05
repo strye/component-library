@@ -1,0 +1,93 @@
+{
+	"web component html": {
+		"scope": "html",
+		"prefix": "wchtml",
+		"body": [
+			"<div class='elm'>",
+			"\t<div class='title' id='elmTitle'></div>",
+			"</div>"
+		]
+	},
+	"web compnent js": {
+		"scope": "javascript",
+		"prefix": "wcjs",
+		"body": [
+			"import styles from './$1.style.css';",
+			"import html from './$1.html';",
+			
+			"\nconst template = document.createElement('template');",
+			"template.innerHTML = html;",
+			
+			"\nclass $2 extends HTMLElement {",
+			"\tstatic get is() { return '$1'; }",
+			"\n\tconstructor() {",
+			"\t\tsuper();",
+			"\t\tthis._title = '';",
+			"\n\t\t// Attach a shadow root to the element.",
+			"\t\tconst shadowRoot = this.attachShadow({mode: 'open'});",
+			"\t\tshadowRoot.innerHTML = `<style>\\${styles\\}</style>`;",
+			"\t\tshadowRoot.appendChild(template.content.cloneNode(true));",
+			"\t}",
+
+			"\n\tstatic get observedAttributes() {",
+			"\t\treturn ['elm-title'];",
+			"\t}",
+
+			"\n\trender() {",
+			"\t\tlet sr = this.shadowRoot;",
+			"\t\tsr.querySelector('#elmTitle').innerText = this._title;",
+			"\t}",
+
+			"\n\tconnectedCallback() {",
+			"\t\tthis._title = this.getAttribute('elm-title');",
+			"\t\tthis.render()",
+			"\t}",
+
+			"\n\tattributeChangedCallback(attrName, oldVal, newVal) {",
+			"\t\tif (attrName === 'elm-title') { this._title = newVal; this.render(); }",
+			"\t}",
+
+			"\n\tsetAtProp(attrName, val) {",
+			"\t\tif (val) { this.setAttribute(attrName, val); }",
+			"\t\telse { this.removeAttribute(attrName); }",
+			"\t\tthis.render()",
+			"\t}",
+
+			"\n\tget title(){ return this._title; }",
+			"\tset title(val){ this.setAtProp('elm-title', val) }",
+
+			"}  // END $2",
+			"\ncustomElements.define($2.is, $2);",
+			"export default $2;"
+		]
+	},
+	"web component css": {
+		"scope": "css",
+		"prefix": "wccss",
+		"body": [
+			":host {",
+			"\tdisplay: inline-block;",
+			"\ttext-align: center;",
+			"\tposition: relative;",
+			"}",
+
+			".elm {",
+			"\tfloat: left;",
+			"\tposition: relative;",
+			"\twidth: calc(100% - 20px);",
+			"\theight: calc(100% - 20px);",
+			"\tmin-width: 100px;",
+			"\tmin-height:75px;",
+			"\tmargin: 8px;",
+			"\tborder: 2px solid #000;",
+			"\tborder-radius: 8px;",
+			"\tcolor:#000;",
+			"}",
+
+			".title {font-size: 1.25em;padding: 0 4px}",
+
+			".clearfix{clear: both;}",
+			".hidden { display: none;}"
+		]
+	}
+}
